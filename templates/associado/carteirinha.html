@@ -1,0 +1,75 @@
+{% extends 'associado/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="pwa-wrapper">
+    <div class="mobile-actions-bar">
+        <a href="{% url 'perfil' %}" class="pwa-btn">✕</a>
+        <span class="pwa-status">ID DIGITAL</span>
+        <button class="pwa-btn" onclick="window.print()">🖨️</button>
+    </div>
+
+    <div class="carteirinha-layout-grid">
+        <section class="secao-cartao">
+            <div class="container-3d" onclick="this.classList.toggle('flipped')">
+                <div class="cartao-inner">
+                    <div class="face frente">
+                        <div class="f-top">
+                            <img src="{% static 'assets/logo_sindapp_white.png' %}" width="80">
+                            <div class="chip-digital" style="width:40px; height:30px; background:#ffd700; border-radius:5px;"></div>
+                        </div>
+                        <div class="f-mid">
+                            <div class="f-foto">
+                                <img src="{% static 'assets/avatar_quadrado.png' %}">
+                            </div>
+                            <div class="f-info">
+                                <label>ASSOCIADO</label>
+                                <h2>RICARDO OLIVEIRA</h2>
+                                <label>MATRÍCULA</label>
+                                <p>#2026-001</p>
+                            </div>
+                        </div>
+                        <div class="f-bottom">
+                            <span class="badge" style="background:rgba(255,255,255,0.2); padding:5px; border-radius:4px;">SÓCIO EFETIVO</span>
+                            <span class="validade">VAL: 12/2026</span>
+                        </div>
+                        <div class="holograma"></div>
+                    </div>
+
+                    <div class="face verso">
+                        <div class="v-header" style="font-weight:bold; font-size:0.9rem; margin-bottom:10px;">AUTENTICAÇÃO SINDAPP</div>
+                        <div class="v-qr">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://sindapp.com/v/2026001">
+                            <p class="hash" style="font-size:0.8rem; margin-top:5px;">AUT: 882.991-X</p>
+                        </div>
+                        <div class="v-footer" style="margin-top:15px; font-size:0.7rem; color:#666;">
+                            <p>Documento gerado em:</p>
+                            <b id="pwa-clock">--/--/---- 00:00</b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="instrucao" style="text-align:center; color:#666; font-size:0.8rem; margin-top:20px;">Toque para girar o cartão</p>
+        </section>
+
+        <aside class="secao-extras">
+            <div class="pwa-card">
+                <h3 style="color:#004a8d; font-size:1.1rem; margin-bottom:10px;">Termos de Uso</h3>
+                <p style="font-size:0.8rem; color:#555;">Este documento é pessoal e intransferível, válido mediante apresentação de documento oficial com foto.</p>
+            </div>
+            <div class="pwa-card">
+                <h3 style="color:#004a8d; font-size:1.1rem; margin-bottom:10px;">Novos Parceiros</h3>
+                <div class="parceiros-lista" style="display:flex; gap:10px; margin-top:10px;">
+                    <div class="p-item" style="background:white; padding:10px; border-radius:8px; font-size:0.8rem; font-weight:bold; box-shadow:0 2px 5px rgba(0,0,0,0.05);">Saúde+</div>
+                    <div class="p-item" style="background:white; padding:10px; border-radius:8px; font-size:0.8rem; font-weight:bold; box-shadow:0 2px 5px rgba(0,0,0,0.05);">FlexGas</div>
+                    <div class="p-item" style="background:white; padding:10px; border-radius:8px; font-size:0.8rem; font-weight:bold; box-shadow:0 2px 5px rgba(0,0,0,0.05);">Educar</div>
+                </div>
+            </div>
+        </aside>
+    </div>
+</div>
+
+<script>
+    document.getElementById('pwa-clock').innerText = new Date().toLocaleString('pt-BR');
+</script>
+{% endblock %}

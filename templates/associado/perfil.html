@@ -1,0 +1,61 @@
+{% extends 'associado/base.html' %}
+{% load static %}
+
+{% block content %}
+<main class="container-perfil">
+    <div class="navegacao-topo">
+        <a href="{% url 'index' %}" class="link-voltar">← Voltar para a Listagem</a>
+    </div>
+
+    <div class="perfil-layout">
+        <aside class="sidebar-usuario">
+            <div class="foto-perfil-wrapper">
+                <img src="{% static 'assets/avatar-padrao.png' %}" alt="Ricardo Oliveira" class="foto-perfil-grande">
+                <br>
+                <span class="badge-status ativo" style="background:#28a745; color:white; padding:5px 10px; border-radius:15px; font-size:0.8rem;">Sócio Ativo</span>
+            </div>
+            <h2 class="nome-perfil">Ricardo Oliveira</h2>
+            <p class="subtitulo-perfil">Associado desde: Jan/2020</p>
+            <div class="acoes-perfil">
+                <button class="btn-perfil-primario">Imprimir PDF</button>
+                <button class="btn-perfil-secundario">Atualizar Foto</button>
+            </div>
+        </aside>
+
+        <section class="conteudo-principal-perfil">
+            <div class="card-perfil-dados">
+                <h3>Dados Cadastrais</h3>
+                <div class="grid-informacoes">
+                    <div class="item-info"><label>CPF:</label> <span>123.456.789-00</span></div>
+                    <div class="item-info"><label>Matrícula:</label> <span>#2026-001</span></div>
+                    <div class="item-info"><label>E-mail:</label> <span>ricardo@sindapp.com.br</span></div>
+                    <div class="item-info"><label>Telefone:</label> <span>(31) 98877-6655</span></div>
+                </div>
+            </div>
+
+            <div class="card-perfil-dados">
+                <h3>Carteirinha Digital</h3>
+                <div class="carteirinha-display">
+                    <div class="cartao-digital-vibe">
+                        <div class="cartao-head">
+                            <img src="{% static 'assets/logo_sindapp_white.png' %}" width="80">
+                            <span class="selo-seguranca" style="float:right; border:1px solid white; padding:2px 5px; font-size:0.6rem; border-radius:4px;">Autenticada</span>
+                        </div>
+                        <div class="cartao-body">
+                            <div class="cartao-info">
+                                <p class="c-label">NOME DO ASSOCIADO</p>
+                                <p class="c-nome">RICARDO OLIVEIRA</p>
+                                <p class="c-label">CATEGORIA</p>
+                                <p class="c-valor" style="font-weight:bold; font-size:1.2rem;">Sócio Efetivo</p>
+                            </div>
+                            <div class="cartao-foto">
+                                <img src="{% static 'assets/avatar_quadrado.png' %}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+{% endblock %}
