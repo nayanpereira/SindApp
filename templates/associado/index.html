@@ -32,12 +32,22 @@
 
     <section class="tabela-socios">
         <h2>Últimos Associados Atualizados</h2>
+
+        {% for associado in lista_associado %}
         <div class="linha-socio">
-            <span>ID: #001</span>
-            <strong>Ricardo Oliveira</strong>
-            <span class="badge ativo" style="color:#28a745; font-weight:bold;">Ativo</span>
+            <span>ID: {{associado.id}}</span>
+            <strong>{{associado.nome}}</strong>
+    
+            {% if associado.status == 'Ativo' %}
+                <span class="badge ativo">{{associado.status}}</span>
+            {% else %}
+                <span class="badge inativo">{{associado.status}}</span>
+            {% endif %}
+           
             <a href="{% url 'perfil' %}" class="btn-link">Ver Perfil</a>
         </div>
+        {% endfor %}
+        
     </section>
 </main>
 {% endblock %}

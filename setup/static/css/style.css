@@ -97,6 +97,35 @@ a { text-decoration: none; }
 }
 .btn-link { color: #004a8d; font-weight: bold; }
 
+/* --- ALINHAMENTO DAS COLUNAS DA LISTA --- */
+/* O ID ocupa 1 parte do espaço e alinha à esquerda */
+.linha-socio span:first-child { 
+    flex: 1; 
+    text-align: left; 
+}
+
+/* O nome ocupa 2 partes (o dobro de espaço) e o texto fica no centro */
+.linha-socio strong { 
+    flex: 2; 
+    text-align: center; 
+}
+
+/* O status ocupa 1 parte e o texto fica no centro */
+.linha-socio .badge { 
+    flex: 1; 
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Cores dinâmicas para o status */
+.linha-socio .badge.ativo { color: #28a745; }
+.linha-socio .badge.inativo { color: #dc3545; }
+
+/* O link ocupa 1 parte e alinha à direita */
+.linha-socio .btn-link { 
+    flex: 1; 
+    text-align: right; 
+}
 /* ==========================================================================
    5. PERFIL
    ========================================================================== */
