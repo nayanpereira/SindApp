@@ -1,9 +1,10 @@
 from django.shortcuts import render
 
+
 def index(request):
     # criar dados mock do associado: ID, nome, status, (ativo/inativo)
     # criar uma lista de dicionários com dados mock para representar os usuários
-    
+    #Agora não vai precisar usar esses dados, foi criado um banco de dados com o shell e sqlite
     associado = [
         {'id': '001', 'nome': 'Romulo Jackson', 'status': 'Ativo'},
         {'id': '002', 'nome': 'David Quilan', 'status': 'Ativo'},
@@ -18,9 +19,11 @@ def index(request):
         {'id': '011', 'nome': 'Wesley Cleriton', 'status': 'Ativo'},
         {'id': '012', 'nome': 'Dennis Jonhson', 'status': 'Inativo'},
     ]
+
     # O django buscara automaticamente dentro da pasta templates
     # 2. Prepara o dicionário de contexto. 
     # A chave 'lista_associado' é exatamente o nome que você usou no {% for %} do HTML.
+    
     contexto = {
         'lista_associado': associado
     }
