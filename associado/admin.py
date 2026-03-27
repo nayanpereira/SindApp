@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from associado.models import Associado, Empresa
+
+admin.site.register(Associado)
+admin.site.register(Empresa) 

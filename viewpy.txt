@@ -1,14 +1,13 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from .models import Associado,Empresa
-
+from .models import Associado
 
 def index(request):
     # dados mock do associado: ID, nome, status, (ativo/inativo)
-    # criar uma lista de dicionários com dados mock para representar os usuários(associados)
-    #Agora não vai precisar usar essa lista de dados, foi criado um banco de dados com o shell e sqlite
-    """
-    associados = [
+    # criar uma lista de dicionários com dados mock para representar os usuários
+    #Agora não vai precisar usar esses dados, foi criado um banco de dados com o shell e sqlite
+     """
+    associado = [
         {'id': '001', 'nome': 'Romulo Jackson', 'status': 'Ativo'},
         {'id': '002', 'nome': 'David Quilan', 'status': 'Ativo'},
         {'id': '003', 'nome': 'Nayan Jonhson', 'status': 'Inativo'},
@@ -22,29 +21,22 @@ def index(request):
         {'id': '011', 'nome': 'Wesley Cleriton', 'status': 'Ativo'},
         {'id': '012', 'nome': 'Dennis Jonhson', 'status': 'Inativo'},
     ]
-        
-    """
-    ## Prepara o dicionário de contexto. 
-    associados = Associado.objects.all()
-    # O Django buscará automaticamente dentro da pasta templates/
-    return render(request, 'associado/index.html', {'lista_associados': associados})
-# Função para carregar o perfil do associado
-
+"""
+    # O django buscara automaticamente dentro da pasta templates
+    # 2. Prepara o dicionário de contexto. 
+    # A chave 'lista_associado' é exatamente o nome que você usou no {% for %} do HTML.
+    
+    contexto = {
+        'lista_associado': associado
+    }
+    # 3. Passa o contexto como terceiro argumento no render
+    return render(request, 'associado/index.html', contexto)
 
 def perfil(request):
     return render(request, 'associado/perfil.html')
 
-
 def beneficios(request):
-    # Por enquanto, apenas renderizamos o HTML de design
     return render(request, 'associado/beneficios.html')
 
-
 def carteirinha(request):
-    # Aqui passamos o contexto 'vibe pwa' para o template
     return render(request, 'associado/carteirinha.html')
-
-def carteirinha(request):
-    # Aqui passamos o contexto 'vibe pwa' para o template
-    empresa = empresa.objects.all()
-    return render(request, 'associado/empresa.html',{"emp":empresas})
