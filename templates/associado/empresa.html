@@ -1,23 +1,16 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listar Empresas</title>
-</head>
-<body>
-    <table>
-        <tr>
-            <th>Nome</th>
-            <th>CNPJ</th>
-        </tr>
-        {% for empresa in emp %}
-        <tr>
-            <td>{{ empresa.nome }}</td>
-            <td>{{ empresa.cnpj }}</td>
-        </tr>
-        {% endfor %}
-
-    </table>
-</body>
-</html>
+{% extends 'associado/base.html' %}
+{%load static %}
+{% block content %}    
+        <section class="tabela-socios">
+            <h2>Últimas Empresas Atualizadas</h2>
+            {% for e in empre %}
+            <div class="linha-socio">
+                <span>ID: {{e.id}}</span>
+                <strong> {{e.nome}}:{{e.cnpj}}</strong>
+                <!-- se cidade for none então mostrar "Cidade não informada" -->
+                <strong> {{e.cidade|default:"Cidade não informada"}}</strong>
+                <a href="{% url 'empresa' %}" class="btn-link">Ver Detalhes</a>
+            </div>
+            {% endfor %}
+        </section>
+{% endblock %}

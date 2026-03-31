@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from .models import Associado,Empresa
+from associado.models import Associado,Empresa
 
 
 def index(request):
@@ -44,7 +44,7 @@ def carteirinha(request):
     # Aqui passamos o contexto 'vibe pwa' para o template
     return render(request, 'associado/carteirinha.html')
 
-def carteirinha(request):
-    # Aqui passamos o contexto 'vibe pwa' para o template
-    empresa = empresa.objects.all()
-    return render(request, 'associado/empresa.html',{"emp":empresas})
+def empresa(request):
+    # Aqui passamos o contexto 
+    empresa = Empresa.objects.all()
+    return render(request, 'associado/empresa.html',{"empre":empresa})
