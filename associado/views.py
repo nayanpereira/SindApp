@@ -1,34 +1,38 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from associado.models import Associado,Empresa
+from django.utils import timezone
+from datetime import timedelta
 
 
 def index(request):
-    # dados mock do associado: ID, nome, status, (ativo/inativo)
-    # criar uma lista de dicionários com dados mock para representar os usuários(associados)
-    #Agora não vai precisar usar essa lista de dados, foi criado um banco de dados com o shell e sqlite
-    """
-    associados = [
-        {'id': '001', 'nome': 'Romulo Jackson', 'status': 'Ativo'},
-        {'id': '002', 'nome': 'David Quilan', 'status': 'Ativo'},
-        {'id': '003', 'nome': 'Nayan Jonhson', 'status': 'Inativo'},
-        {'id': '004', 'nome': 'Cassio Dylan', 'status': 'Ativo'},
-        {'id': '005', 'nome': 'Welligton Clinton', 'status': 'Inativo'},
-        {'id': '006', 'nome': 'Marcos Jordan', 'status': 'Pendente'},
-        {'id': '007', 'nome': 'Lucio Smith', 'status': 'Ativo'},
-        {'id': '008', 'nome': 'Robert Brown ', 'status': 'Ativo'},
-        {'id': '009', 'nome': 'Mary Jackson', 'status': 'Inativo'},
-        {'id': '010', 'nome': 'Enzo Smith', 'status': 'Pendente'},
-        {'id': '011', 'nome': 'Wesley Cleriton', 'status': 'Ativo'},
-        {'id': '012', 'nome': 'Dennis Jonhson', 'status': 'Inativo'},
-    ]
-        
-    """
-    ## Prepara o dicionário de contexto. 
-    associados = Associado.objects.all()
-    # O Django buscará automaticamente dentro da pasta templates/
-    return render(request, 'associado/index.html', {'lista_associados': associados})
-# Função para carregar o perfil do associado
+    # 1. Pegar o termo de busca enviado pelo formulário
+    termo_busca = request.GET.get('buscar')
+
+    # 2. Se o usuário digitou algo, filtramos. Se não, pegamos todos.
+    if termo_busca:
+        # icontains busca nomes que CONTÉM o texto, ignorando maiúsculas/minúsculas
+        associados = Associado.objects.filter(nome__icontains=termo_busca)
+    else:
+        associados = Associado.objects.all().order_by('-data_cadastro') # Mais recentes primeiro
+
+    # 3. Lógica para os Cards (Números Reais) e Card Inativos e pendentes, Vamos usar os inativos como exemplo
+    total_ativos = Associado.objects.filter(ativo=True).count()
+    total_pendentes = Associado.objects.filter(ativo=False).count()
+    
+    # NOVAS ADESÕES: Filtra quem cadastrou de 30 dias atrás até hoje
+    trinta_dias_atras = timezone.now() - timedelta(days=30)
+    novas_adesoes = Associado.objects.filter(data_cadastro__gte=trinta_dias_atras).count()
+
+    contexto = {
+        'lista_associados': associados,
+        'total_ativos': total_ativos,
+        'novas_adesoes': novas_adesoes,
+        'total_pendentes': total_pendentes,
+    }
+
+    return render(request, 'associado/index.html', contexto)
+    # Funções para carregar o perfil do associado
 
 
 def perfil(request):

@@ -10,16 +10,17 @@
 
     <div class="cards-grid">
         <div class="card-status azul">
-            <h3>1.240</h3>
+            <h3>{{ total_ativos }}</h3>
             <p>Sócios Ativos</p>
         </div>
         <div class="card-status verde">
-            <h3>45</h3>
+            <h3>{{ novas_adesoes }}</h3>
             <p>Novas Adesões</p>
+            <small>Últimos 30 dias</small>
         </div>
         <div class="card-status laranja">
-            <h3>12</h3>
-            <p>Pendentes</p>
+            <h3>{{ total_pendentes }}</h3>
+             <p>Inativos ou Pendentes</p>
         </div>
     </div>
 
@@ -33,19 +34,21 @@
     <section class="tabela-socios">
         <h2>Últimos Associados Atualizados</h2>
 
-        {% for associado in lista_associado %}
+        {% for associado in lista_associados %}
         <div class="linha-socio">
             <span>ID: {{associado.id}}</span>
             <strong>{{associado.nome}}</strong>
     
-            {% if associado.status == 'Ativo' %}
-                <span class="badge ativo">{{associado.status}}</span>
+            {% if associado.ativo %}
+            <span class="badge ativo">Ativo</span>
             {% else %}
-                <span class="badge inativo">{{associado.status}}</span>
+            <span class="badge inativo">Inativo</span>
             {% endif %}
            
             <a href="{% url 'perfil' %}" class="btn-link">Ver Perfil</a>
         </div>
+        {% empty %}
+          <p>Nenhum associado encontrado.</p>
         {% endfor %}
         
     </section>

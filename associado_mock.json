@@ -1,0 +1,102 @@
+[
+{
+    "model": "associado.empresa",
+    "pk": 1,
+    "fields": {
+        "orgao": "Google",
+        "cnpj": "76276983928368",
+        "ativo": true,
+        "nome_contato": "Sundar Pichai"
+    }
+},
+{
+    "model": "associado.empresa",
+    "pk": 2,
+    "fields": {
+        "orgao": "Meta",
+        "cnpj": "62379288929987",
+        "ativo": true,
+        "nome_contato": "mark zuckerberg"
+    }
+},
+{
+    "model": "associado.empresa",
+    "pk": 3,
+    "fields": {
+        "orgao": "OpenAI",
+        "cnpj": "8483887872332",
+        "ativo": true,
+        "nome_contato": "Sam Altman"
+    }
+},
+{
+    "model": "associado.empresa",
+    "pk": 4,
+    "fields": {
+        "orgao": "Microsoft",
+        "cnpj": "98293893262398",
+        "ativo": true,
+        "nome_contato": "Satya Nadella"
+    }
+},
+{
+    "model": "associado.associado",
+    "pk": 1,
+    "fields": {
+        "nome": "Fernando Marks",
+        "email": "fernando@gmail.com",
+        "cpf": "788888272-80",
+        "ativo": true,
+        "data_cadastro": "2026-04-08T19:11:25.753Z",
+        "empresa": 1
+    }
+},
+{
+    "model": "associado.associado",
+    "pk": 2,
+    "fields": {
+        "nome": "Pedro Lucas",
+        "email": "pedrolucas@yahoo.com",
+        "cpf": "82876832832",
+        "ativo": true,
+        "data_cadastro": "2026-04-08T19:11:25.753Z",
+        "empresa": 2
+    }
+},
+{
+    "model": "associado.associado",
+    "pk": 3,
+    "fields": {
+        "nome": "Maria Luiza",
+        "email": "marilu@gmail.com",
+        "cpf": "872873827",
+        "ativo": true,
+        "data_cadastro": "2026-04-08T19:11:25.753Z",
+        "empresa": 3
+    }
+},
+{
+    "model": "associado.associado",
+    "pk": 4,
+    "fields": {
+        "nome": "João Pedro Neto",
+        "email": "neto@gmail.com",
+        "cpf": "8728326",
+        "ativo": false,
+        "data_cadastro": "2026-04-08T19:11:25.753Z",
+        "empresa": 4
+    }
+},
+{
+    "model": "associado.associado",
+    "pk": 5,
+    "fields": {
+        "nome": "Luan Fernandes",
+        "email": "luanf@gmail.com",
+        "cpf": "782738273823",
+        "ativo": true,
+        "data_cadastro": "2026-04-08T19:11:25.753Z",
+        "empresa": 2
+    }
+}
+]

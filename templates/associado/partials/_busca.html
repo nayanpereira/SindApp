@@ -1,8 +1,20 @@
 <section class="container-busca">
+   <!-- {# O método GET envia a busca pela URL #} -->
+    <form action="{% url 'index' %}" method="GET" class="busca-wrapper">
+        <input type="text" name="buscar" placeholder="Pesquisar por nome..." class="input-busca" value="{{ request.GET.buscar }}">
+        <button type="submit" class="btn-busca">
+            <span>🔍</span> Buscar</button>
+    </form>
+</section>
+
+
+<!-- <section class="container-busca">
     <div class="busca-wrapper">
         <input type="text" placeholder="Pesquisar por nome, CPF ou matrícula..." class="input-busca">
         <button type="submit" class="btn-busca">
             <span>🔍</span> Buscar
         </button>
     </div>
-</section>
+</section> -->
+
+
